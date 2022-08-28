@@ -19,6 +19,7 @@ jobs:
 
       - name: Checkout sources
         uses: actions/checkout@v2
+        repository: 'surrealdb/surrealdb'
 
       - name: Cache cargo assets
         uses: actions/cache@v3
@@ -51,6 +52,7 @@ jobs:
 
       - name: Checkout sources
         uses: actions/checkout@v2
+        repository: 'surrealdb/surrealdb'
 
       - name: Cache cargo assets
         uses: actions/cache@v3
@@ -121,6 +123,7 @@ jobs:
 
       - name: Checkout sources
         uses: actions/checkout@v2
+        repository: 'surrealdb/surrealdb'
 
       - name: Cache cargo assets
         uses: actions/cache@v3
