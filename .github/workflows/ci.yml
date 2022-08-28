@@ -119,6 +119,7 @@ jobs:
             file: surreal-${{ github.ref_name }}.windows-amd64
             opts:
     runs-on: ${{ matrix.os }}
+    continue-on-error: true
     steps:
 
       - name: Checkout sources
