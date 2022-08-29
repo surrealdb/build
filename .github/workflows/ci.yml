@@ -97,6 +97,25 @@ jobs:
           command: build
           args: ${{ matrix.opts }} --release --locked --target ${{ matrix.arch }}
 
+      - name: Package binaries
+        if: ${{ !contains(matrix.arch, 'windows') }}
+        shell: bash
+        run: |
+          cd target/${{ matrix.arch }}/release
+          chmod +x surreal
+          tar -zcvf ${{ matrix.file }}.tgz surreal
+          echo $(shasum -a 256 ${{ matrix.file }}.tgz | cut -f1 -d' ') > ${{ matrix.file }}.txt
+          cd -
+
+      - name: Package binaries
+        if: ${{ contains(matrix.arch, 'windows') }}
+        shell: bash
+        run: |
+          cd target/${{ matrix.arch }}/release
+          cp surreal.exe ${{ matrix.file }}.exe
+          echo $(shasum -a 256 ${{ matrix.file }}.exe | cut -f1 -d' ') > ${{ matrix.file }}.txt
+          cd -
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
