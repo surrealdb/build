@@ -96,6 +96,8 @@ jobs:
         with:
           command: build
           args: ${{ matrix.opts }} --release --locked --target ${{ matrix.arch }}
+          env:
+            BINDGEN_EXTRA_CLANG_ARGS_aarch64-unknown-linux-gnu: "-I/usr/aarch64-linux-gnu/include/"
 
       - name: Package binaries
         if: ${{ !contains(matrix.arch, 'windows') }}
