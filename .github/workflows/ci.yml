@@ -78,7 +78,7 @@ jobs:
         if: contains(matrix.arch, 'linux') && startsWith(matrix.arch, 'x86_64')
         run: |
           curl -sLO https://github.com/apple/foundationdb/releases/download/6.3.23/foundationdb-clients_6.3.23-1_amd64.deb
-          dpkg -i --force-architecture foundationdb-clients_6.3.23-1_amd64.deb
+          sudo dpkg -i --force-architecture foundationdb-clients_6.3.23-1_amd64.deb
           rm -rf foundationdb-clients_6.3.23-1_amd64.deb
 
       - name: Install stable toolchain
