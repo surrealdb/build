@@ -98,7 +98,7 @@ jobs:
           args: ${{ matrix.opts }} --release --locked --target ${{ matrix.arch }}
         env:
           BINDGEN_EXTRA_CLANG_ARGS_aarch64-unknown-linux-gnu: "-I/usr/aarch64-linux-gnu/include/"
-          RUSTFLAGS: "-C target-feature=+crt-static -C link-arg=libvcruntime.lib"
+          RUSTFLAGS: "-C target-feature=+crt-static -C link-arg=/NODEFAULTLIB:libvcruntimed.lib -C link-arg=/NODEFAULTLIB:vcruntime.lib -C link-arg=/NODEFAULTLIB:vcruntimed.lib -C link-arg=/NODEFAULTLIB:libcmtd.lib -C link-arg=/NODEFAULTLIB:msvcrt.lib -C link-arg=/NODEFAULTLIB:msvcrtd.lib -C link-arg=/NODEFAULTLIB:libucrt.lib -C link-arg=/NODEFAULTLIB:libucrtd.lib -C link-arg=/NODEFAULTLIB:ucrtd.lib -C link-arg=/DEFAULTLIB:libvcruntime.lib -C link-arg=/DEFAULTLIB:libcmt.lib -C link-arg=/DEFAULTLIB:ucrt.lib"
 
       - name: Package binaries
         if: ${{ !contains(matrix.arch, 'windows') }}
