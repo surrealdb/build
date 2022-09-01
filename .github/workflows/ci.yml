@@ -45,6 +45,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'surrealdb/surrealdb'
+          ref: '738ba5d0e5c1d35254b52856770553afe510abe3'
 
       - name: Cache cargo assets
         uses: actions/cache@v3
